@@ -9,5 +9,5 @@ https://arthur-ryoo.github.io/
 1. AJAX
 1. API
 
-# Approches
+# Approach
 The main purpose of the project is to clone Momentum chrome extension.
