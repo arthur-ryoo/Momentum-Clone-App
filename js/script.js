@@ -1,18 +1,58 @@
+// Geolocation
+const COORDS = 'coords';
+var latitude;
+var longitude;
+
+function loadCoords() {
+  console.log('1');
+  const loadedCoords = localStorage.getItem(COORDS);
+  if (loadedCoords === null) {
+    askCoordinates();
+  } else {
+    const jsonParse = JSON.parse(loadedCoords);
+    latitude = jsonParse.latitude;
+    longitude = jsonParse.longitude;
+    loadWeather();
+  }
+
+  function askCoordinates() {
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
+  function success(location) {
+    latitude = location.coords.latitude;
+    longitude = location.coords.longitude;
+    const coordsObject = { latitude, longitude };
+    saveCoords(coordsObject);
+  }
+
+  function error() {
+    console.log("Can't access geo location");
+  }
+
+  function saveCoords(coordsObject) {
+    localStorage.setItem(COORDS, JSON.stringify(coordsObject));
+  }
+}
+
 // Weather API
 
-$('form').on('submit', event => {
-  event.preventDefault();
-  const userInput = $('input[type = "text"]').val();
-  console.log(userInput);
+function loadWeather() {
+  console.log(latitude + longitude);
+  const weatherPosition = `lat=${latitude}&lon=${longitude}`;
+  const API_KEY = '&appid=b9f45391760c4343ac18d9fe52f90d80';
+  const weatherUrl =
+    'http://api.openweathermap.org/data/2.5/weather?' +
+    weatherPosition +
+    API_KEY;
   const promise = $.ajax({
-    url:
-      'http://api.openweathermap.org/data/2.5/weather?appid=b9f45391760c4343ac18d9fe52f90d80&q=' +
-      userInput
+    url: weatherUrl
   });
   promise.then(
     data => {
-      $('#temp').html(data.main.temp - 273.15);
-      console.log(data.main.temp);
+      let temp = data.main.temp - 273.15;
+      $('#temp').html(temp.toString().substring(0, 3) + ' °C');
+      $('#description').html(data.weather[0].description);
       $('#icon').empty();
       $('#icon').prepend(
         '<img id="image" src=http://openweathermap.org/img/wn/' +
@@ -24,7 +64,31 @@ $('form').on('submit', event => {
       console.log('bad request: ', error);
     }
   );
-});
+}
+
+// Unsplash API
+function unsplashRandomBackground() {
+  const accessKey =
+    '517cc5617a9b969a5b3a6f756d3f5662f41668588bed14acb8fc351b37cde8d8';
+  const url = 'https://api.unsplash.com/photos/random?client_id=' + accessKey;
+  const promise = $.ajax({
+    url: url
+  });
+  promise.then(
+    data => {
+      $('#unsplash')
+        .css('background-image', 'url(' + data.urls.regular + ')')
+        .css('background-size', 'cover');
+      $('.image-location').html(data.user.location);
+      $('.first-last-name').html(
+        data.user.first_name + ' ' + data.user.last_name
+      );
+    },
+    error => {
+      console.log('bad request: ', error);
+    }
+  );
+}
 
 // Clock
 const clockContainer = document.querySelector('.clock');
@@ -45,19 +109,13 @@ function showTime() {
 const toDoListContainer = document.querySelector('.todolist');
 const toDoListInput = document.querySelector('.todolist-input');
 const toDoListItem = document.querySelector('.todolist-item');
-const toDoListLocalStorage = 'toDo';
 
 function addToDoList(text) {
   const liList = document.createElement('li');
-  const deleteButton = document.createElement('button');
-  deleteButton.innerHTML = 'Delete';
   const span = document.createElement('span');
   span.innerText = text;
   liList.appendChild(span);
-  liList.appendChild(deleteButton);
   toDoListItem.appendChild(liList);
-
-  console.log(text);
 }
 
 function handleSubmit(event) {
@@ -67,17 +125,18 @@ function handleSubmit(event) {
   toDoListInput.value = '';
 }
 
-function loadToDoList() {
-  const toDo = localStorage.getItem(toDoListLocalStorage);
-}
-
 function init() {
   // Clock
   showTime();
   setInterval(showTime, 1000);
 
   // To do list
-  loadToDoList();
   toDoListContainer.addEventListener('submit', handleSubmit);
+
+  // Unsplash
+  unsplashRandomBackground();
+
+  // Geolocation
+  loadCoords();
 }
 init();

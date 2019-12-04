@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS  -->
     <link rel="stylesheet" href="./css/style.css" />
@@ -23,42 +27,36 @@
 
     <title>Momentum Clone</title>
   </head>
-  <body>
+  <body id="unsplash">
     <nav>
-      <p class="linkedin">linkedin icon here</p>
+      <span class="linkedin">
+        <a href="https://www.linkedin.com/in/arthurryoo/" target="_blank"
+          >LinkedIn</a
+        >
+      </span>
     </nav>
     <div class="weather">
-      <h1>Weather Info</h1>
-      <dl>
-        <dt></dt>
-        <dd id="temp"></dd>
-        <div id="icon"></div>
-      </dl>
-      <form>
-        <input type="text" placeholder="City" />
-        <input type="submit" placeholder="Get Weather Info" />
-      </form>
-      <span class="weather-icon">image here</span>
-      <span class="temperature">temp here</span>
-      <span class="location">location here</span>
+      <div id="icon"></div>
+      <div id="temp"></div>
+      <div id="description"></div>
     </div>
     <div class="clock">
       <h1 class="clock-title">00:00:00</h1>
     </div>
-    <span class="greetings"></span>
-    <form class="form">
-      <input class="input" type="text" placeholder="What is your name?" />
-    </form>
+    <span class="greetings">
+      <p>Hello, Arthur!</p>
+    </span>
     <form class="todolist">
       <input
         class="todolist-input"
         type="text"
         placeholder="Add things to do"
       />
-      <ul class="todolist-item"></ul>
     </form>
+    <ul class="todolist-item"></ul>
     <div class="unsplash">
-      <span class="image-info"></span>
+      <div class="image-location"></div>
+      <div class="first-last-name"></div>
     </div>
   </body>
 </html>

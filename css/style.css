@@ -1,0 +1,52 @@
+* {
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  margin: 0;
+}
+
+.clock,
+.todolist,
+.greetings {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.todolist-item {
+  text-align: center;
+}
+.weather {
+  text-align: right;
+}
+
+a {
+  text-decoration: none;
+}
+
+.unsplash {
+  margin: 20px !important;
+}
+
+body {
+  height: 100%;
+}
+
+#image {
+  height: 50px;
+  width: 50px;
+}
+
+.todolist-input {
+  color: black !important;
+}
+
+li {
+  list-style-type: none;
+}
+.clock-title {
+  font-size: 100px;
+}
+
+p {
+  font-size: 50px;
+}
