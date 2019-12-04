@@ -81,7 +81,11 @@ function unsplashRandomBackground() {
         .css('background-size', 'cover');
       $('.image-location').html(data.user.location);
       $('.first-last-name').html(
-        data.user.first_name + ' ' + data.user.last_name
+        'Photo by ' +
+          data.user.first_name +
+          ' ' +
+          data.user.last_name +
+          ' / Unsplash'
       );
     },
     error => {

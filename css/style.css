@@ -1,6 +1,6 @@
 * {
-  color: white;
-  font-family: 'Patrick Hand', cursive;
+  color: black;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
 }
 
@@ -17,10 +17,12 @@
 }
 .weather {
   text-align: right;
+  margin: 20px 20px;
 }
 
 a {
   text-decoration: none;
+  margin: 20px 20px;
 }
 
 .unsplash {
