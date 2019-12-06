@@ -40,6 +40,7 @@
 .first-last-name {
   display: flex;
   text-align: left;
+  line-height: 1.5;
 }
 
 #unsplash {
@@ -49,7 +50,8 @@
 }
 
 body {
-  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
 }
 
 #image {
