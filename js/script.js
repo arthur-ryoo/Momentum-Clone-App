@@ -76,9 +76,7 @@ function unsplashRandomBackground() {
   });
   promise.then(
     data => {
-      $('#unsplash')
-        .css('background-image', 'url(' + data.urls.regular + ')')
-        .css('background-size', 'cover');
+      $('#unsplash').css('background-image', 'url(' + data.urls.regular + ')');
       $('.image-location').html(data.user.location);
       $('.first-last-name').html(
         'Photo by ' +

@@ -1,12 +1,13 @@
 * {
-  color: black;
+  color: white;
   font-family: 'Roboto', sans-serif;
   margin: 0;
 }
 
 .clock,
 .todolist,
-.greetings {
+.greetings,
+.focus {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -20,13 +21,31 @@
   margin: 20px 20px;
 }
 
-a {
-  text-decoration: none;
-  margin: 20px 20px;
+.weather,
+.linkedin,
+.unsplash {
+  font-size: 20px;
+}
+
+.clock-title {
+  font-size: 100px;
 }
 
 .unsplash {
   margin: 20px !important;
+  padding-top: 150px;
+}
+
+.image-location,
+.first-last-name {
+  display: flex;
+  text-align: left;
+}
+
+#unsplash {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body {
@@ -38,17 +57,33 @@ body {
   width: 50px;
 }
 
-.todolist-input {
-  color: black !important;
+.focus {
+  padding-top: 75px;
+  font-size: 40px;
 }
 
-li {
-  list-style-type: none;
-}
-.clock-title {
-  font-size: 100px;
+.todolist-input {
+  padding-top: 10px;
+  width: 30%;
+  height: 20%;
+  background: 0;
+  border: 0;
+  border-bottom: 2px solid white;
+  text-align: center;
+  font-size: 40px;
 }
 
 p {
   font-size: 50px;
+}
+
+a {
+  text-decoration: none;
+  margin: 20px 20px;
+  padding-top: 0 20px 0 20px;
+}
+
+li {
+  list-style-type: none;
+  font-size: 35px;
 }
