@@ -1,10 +1,9 @@
 // Geolocation
 const COORDS = 'coords';
-var latitude;
-var longitude;
+let latitude;
+let longitude;
 
 function loadCoords() {
-  console.log('1');
   const loadedCoords = localStorage.getItem(COORDS);
   if (loadedCoords === null) {
     askCoordinates();
@@ -56,8 +55,8 @@ function loadWeather() {
       $('#icon').empty();
       $('#icon').prepend(
         '<img id="image" src=http://openweathermap.org/img/wn/' +
-          data.weather[0].icon +
-          '@2x.png>'
+        data.weather[0].icon +
+        '@2x.png>'
       );
     },
     error => {
@@ -80,10 +79,10 @@ function unsplashRandomBackground() {
       $('.image-location').html(data.user.location);
       $('.first-last-name').html(
         'Photo by ' +
-          data.user.first_name +
-          ' ' +
-          data.user.last_name +
-          ' / Unsplash'
+        data.user.first_name +
+        ' ' +
+        data.user.last_name +
+        ' / Unsplash'
       );
     },
     error => {
@@ -104,7 +103,7 @@ function showTime() {
 
   clockTitle.innerText = `${hour < 10 ? `0${hour}` : hour}:${
     minute < 10 ? `0${minute}` : minute
-  }:${second < 10 ? `0${second}` : second}`;
+    }:${second < 10 ? `0${second}` : second}`;
 }
 
 // To do list
