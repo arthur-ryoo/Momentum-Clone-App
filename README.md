@@ -1,5 +1,5 @@
 # Momentum-Clone
-https://arthur-ryoo.github.io/
+Momentum clone app is a website using HTML, CSS, JavaScript, jQuery, AJAX, API to create a duplicate of Chrome extension app. Featured functionality allows users to find the weather info based on geolocation and load a random background image.
 
 # Technologies
 1. HTML
